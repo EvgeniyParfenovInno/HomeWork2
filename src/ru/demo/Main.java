@@ -48,7 +48,7 @@ public class Main {
                 .map(Employee::getAge)
                 .mapToInt(Integer::intValue)
                 .average()
-                .orElse(0));
+                .orElse(Double.NaN));
 
         var str1 = List.of("Сотрудник", "Инженер", "Технолог", "Директор", "Имя", "Возраст", "Должность");
 
@@ -76,7 +76,7 @@ public class Main {
 
         System.out.printf("9. Самое длинное слово: %s%n", str3.stream()
                 .flatMap(s -> Arrays.stream(s.split(" ")))
-                .min((o1, o2) -> o2.length() - o1.length())
+                .max(Comparator.comparingInt(String::length))
                 .orElse(null));
     }
 }
