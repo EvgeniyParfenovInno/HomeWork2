@@ -62,13 +62,8 @@ public class Main {
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
 
         System.out.printf("8. Сортировка по длине и алфавиту: %s%n", str1.stream()
-                .sorted((o1, o2) -> {
-                            if (o1.length() == o2.length()) {
-                                return o1.compareTo(o2);
-                            }
-                            return o1.length() - o2.length();
-                        }
-                ).toList());
+                .sorted((o1, o2) -> o1.length() == o2.length() ? o1.compareTo(o2) : o1.length() - o2.length())
+                .toList());
 
         var str3 = List.of("один два три четыре пять",
                 "белый синий красный зеленый сиреневый",
